@@ -1,0 +1,23 @@
+# Task Log
+
+- 2026-07-01: Created a static English copybook generator with batch word input, A4 preview, 4 words per page, 3 tracing rows per word, black model words, gray trace words/lines, translation and phonetic display, and print-to-PDF export.
+- 2026-07-01: Tightened A4 copybook layout spacing and font sizes so each printed page can fit 4 word groups reliably.
+- 2026-07-01: Changed handwriting guide lines from CSS background gradients to real dashed border elements so they survive browser PDF export.
+- 2026-07-01: Added PDF import for selectable-text PDFs. Imported English words are deduplicated, optional Chinese translation and phonetic text are preserved when present, and the preview regenerates automatically.
+- 2026-07-01: Adapted PDF import for `words.pdf` pages 2-31 by parsing the two-column vocabulary table layout and importing English words with Chinese translations.
+- 2026-07-01: Added PDF page-range controls that default to page 1 through the selected PDF's last page and automatically refresh the word list after edits.
+- 2026-07-01: Added optional online phonetic lookup that writes results back into the word list.
+- 2026-07-01: Replaced word-level source page display with A4 page footers in the form `- current/total -`.
+- 2026-07-01: Updated copybook layout to 10 words per page with one practice row per word, two gray trace words per row, smaller fonts, and retained model word metadata.
+- 2026-07-01: Moved numbering from practice rows to the model word row with global word indexes starting at 1.
+- 2026-07-01: Changed default subtitle to `剑桥少儿英语`, removed word-block separator lines, and made the second writing guide line from the bottom light red.
+- 2026-07-01: Repositioned practice-row trace words to use the light-red guide as the writing baseline instead of centering them between guide lines.
+- 2026-07-01: Switched practice trace words to SVG text with the baseline fixed to the red guide line for standard four-line English handwriting alignment.
+- 2026-07-01: Reduced spacing and stroke weight for the two gray trace words so more blank writing space remains on each practice line.
+- 2026-07-01: Tightened the gap between the two gray trace words further while preserving trace font weight and baseline alignment.
+- 2026-07-01: Replaced fixed-width trace word SVG boxes with per-word estimated widths so duplicate trace words sit closer together.
+- 2026-07-01: Removed remaining SVG intrinsic-width spacing by explicitly constraining trace SVG width and tightening the per-word width estimate.
+- 2026-07-01: Relaxed duplicate trace word spacing after the previous estimate caused overlap, using a small gap and slightly wider per-word SVG width.
+- 2026-07-01: Restored duplicate trace words to the previous stable fixed-width layout after dynamic SVG width caused overlap.
+- 2026-07-01: Added Datamuse IPA fallback for phonetic lookup and skipped lookup for phrases, improving coverage for single-word entries with missing Dictionary API phonetics.
+- 2026-07-01: Added ARPABET-to-IPA conversion and made phonetic refresh replace existing ARPABET-style annotations for single words.

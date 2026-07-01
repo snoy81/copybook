@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>English Copybook Generator</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Copybook controls">
+        <header class="toolbar">
+          <div>
+            <h1>English Copybook</h1>
+            <p>10 words per A4 page, 1 tracing row per word.</p>
+          </div>
+          <div class="actions">
+            <button id="generateBtn" type="button">Generate</button>
+            <button id="printBtn" type="button">Export PDF</button>
+          </div>
+        </header>
+
+        <div class="controls-grid">
+          <label>
+            <span>Title</span>
+            <input id="titleInput" type="text" value="English New Words Copybook">
+          </label>
+          <label>
+            <span>Subtitle</span>
+            <input id="subtitleInput" type="text" value="剑桥少儿英语">
+          </label>
+          <label class="file-control">
+            <span>PDF import</span>
+            <input id="pdfInput" type="file" accept="application/pdf">
+          </label>
+          <div class="range-control">
+            <label>
+              <span>From page</span>
+              <input id="pageFromInput" type="number" min="1" value="1">
+            </label>
+            <label>
+              <span>To page</span>
+              <input id="pageToInput" type="number" min="1" value="1">
+            </label>
+          </div>
+          <label class="checkbox-control">
+            <input id="autoPhoneticsInput" type="checkbox" checked>
+            <span>Auto fetch phonetics after PDF import</span>
+          </label>
+          <button id="phoneticsBtn" type="button" class="secondary-action">Fetch phonetics</button>
+        </div>
+        <p id="importStatus" class="import-status" role="status">
+          Import reads selectable-text PDFs. Page range updates the word list after a PDF is selected.
+        </p>
+
+        <label class="word-input">
+          <span>Words</span>
+          <textarea id="wordsInput" spellcheck="false">basement, 地下室, /ˈbeɪsmənt/
+roof, 屋顶, /ruːf/
+wall, 墙, /wɔːl/
+floor, 地板, /flɔːr/
+window, 窗户, /ˈwɪndoʊ/
+door, 门, /dɔːr/
+kitchen, 厨房, /ˈkɪtʃən/
+bedroom, 卧室, /ˈbedruːm/</textarea>
+        </label>
+      </section>
+
+      <section class="preview-wrap" aria-label="A4 preview">
+        <div id="pages" class="pages"></div>
+      </section>
+    </main>
+
+    <template id="pageTemplate">
+      <article class="copybook-page">
+        <header class="page-header">
+          <h2></h2>
+          <p></p>
+        </header>
+        <div class="word-blocks"></div>
+        <footer class="page-footer"></footer>
+      </article>
+    </template>
+
+    <template id="wordTemplate">
+      <section class="word-block">
+        <div class="model-row">
+          <span class="word-index"></span>
+          <span class="model-label">Model word:</span>
+          <span class="model-word"></span>
+          <span class="translation"></span>
+          <span class="phonetic"></span>
+        </div>
+        <div class="practice-rows"></div>
+      </section>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

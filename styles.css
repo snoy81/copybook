@@ -1,0 +1,396 @@
+:root {
+  --ink: #202020;
+  --muted: #777;
+  --paper: #fff;
+  --line: #d4d4d4;
+  --guide-line: #f1b7b7;
+  --line-soft: #e1e1e1;
+  --ghost: #c9c9c9;
+  --panel: #f4f5f7;
+  --border: #d7dbe0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #e8ebef;
+  font-family: Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  min-height: 100vh;
+}
+
+.workspace {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
+  padding: 24px;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+}
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.toolbar h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.toolbar p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+button {
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  padding: 9px 12px;
+  color: #fff;
+  background: #1f2937;
+  cursor: pointer;
+}
+
+button + button {
+  color: #1f2937;
+  background: #fff;
+}
+
+.controls-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 11px;
+  color: var(--ink);
+  background: #fff;
+  font-weight: 400;
+}
+
+.range-control {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.checkbox-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.checkbox-control input {
+  width: auto;
+}
+
+.secondary-action {
+  width: 100%;
+  color: #1f2937;
+  background: #fff;
+}
+
+input:disabled {
+  color: #9ca3af;
+  background: #eef0f3;
+}
+
+.import-status {
+  min-height: 36px;
+  margin: -2px 0 14px;
+  color: #5f6673;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.import-status.error {
+  color: #a33a3a;
+}
+
+.import-status.success {
+  color: #25634b;
+}
+
+textarea {
+  min-height: 390px;
+  resize: vertical;
+  line-height: 1.55;
+  font-family: "Cascadia Mono", Consolas, monospace;
+}
+
+.preview-wrap {
+  padding: 32px;
+  overflow: auto;
+}
+
+.pages {
+  display: grid;
+  gap: 24px;
+  justify-content: center;
+}
+
+.copybook-page {
+  display: flex;
+  flex-direction: column;
+  width: 210mm;
+  height: 297mm;
+  padding: 6mm 10mm 6mm;
+  background: var(--paper);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+  break-after: page;
+}
+
+.page-header {
+  text-align: center;
+  padding-bottom: 2.5mm;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.page-header h2 {
+  margin: 0;
+  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+  font-size: 17pt;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: #111;
+}
+
+.page-header p {
+  margin: 2px 0 0;
+  color: #666;
+  font-size: 8.5pt;
+}
+
+.word-blocks {
+  display: grid;
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  flex: 1;
+  min-height: 0;
+}
+
+.word-block {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+  padding: 1.2mm 0 1mm;
+}
+
+.model-row {
+  display: flex;
+  align-items: baseline;
+  gap: 2.4mm;
+  min-width: 0;
+  margin-bottom: 0.8mm;
+  white-space: nowrap;
+}
+
+.word-index {
+  flex: 0 0 7mm;
+  color: #555;
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-align: right;
+}
+
+.model-label {
+  color: #444;
+  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+  font-size: 8.5pt;
+  font-weight: 700;
+}
+
+.model-word {
+  color: #111;
+  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.translation,
+.phonetic {
+  color: #555;
+  font-size: 7.8pt;
+}
+
+.page-footer {
+  flex: 0 0 4mm;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: #666;
+  font-size: 8pt;
+  line-height: 1;
+}
+
+.practice-rows {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 0.8mm;
+  min-height: 0;
+}
+
+.practice-row {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.writing-lines {
+  position: absolute;
+  inset: 0 0 0 0;
+}
+
+.writing-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px dashed var(--line);
+}
+
+.writing-line[data-line="1"] {
+  top: 17%;
+}
+
+.writing-line[data-line="2"] {
+  top: 39%;
+}
+
+.writing-line[data-line="3"] {
+  top: 61%;
+  border-top-color: var(--guide-line);
+}
+
+.writing-line[data-line="4"] {
+  top: 83%;
+}
+
+.trace-words {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  gap: 1.5mm;
+  align-items: stretch;
+  pointer-events: none;
+}
+
+.trace-word {
+  flex: 0 0 32mm;
+  height: 100%;
+  overflow: visible;
+  color: var(--ghost);
+}
+
+.trace-word text {
+  fill: currentColor;
+  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .preview-wrap {
+    padding: 16px;
+  }
+
+  .copybook-page {
+    transform-origin: top center;
+    transform: scale(0.72);
+    margin-bottom: -83mm;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .workspace {
+    display: none;
+  }
+
+  .app-shell,
+  .preview-wrap,
+  .pages {
+    display: block;
+    padding: 0;
+  }
+
+  .copybook-page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    box-shadow: none;
+    transform: none;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .copybook-page:last-child {
+    page-break-after: auto;
+  }
+}
