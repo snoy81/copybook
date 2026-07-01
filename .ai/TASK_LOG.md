@@ -21,3 +21,4 @@
 - 2026-07-01: Restored duplicate trace words to the previous stable fixed-width layout after dynamic SVG width caused overlap.
 - 2026-07-01: Added Datamuse IPA fallback for phonetic lookup and skipped lookup for phrases, improving coverage for single-word entries with missing Dictionary API phonetics.
 - 2026-07-01: Added ARPABET-to-IPA conversion and made phonetic refresh replace existing ARPABET-style annotations for single words.
+- 2026-07-01: Prepared the project for GitHub synchronization and used the GitHub API path because local command-line Git authentication was unavailable.

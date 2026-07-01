@@ -10,3 +10,4 @@
 - 2026-07-01: Changed the copybook density to 10 words per A4 page. Each word keeps the model row and uses one tracing row with two gray trace words followed by blank writing space.
 - 2026-07-01: Practice trace words are rendered as inline SVG text so their text baseline can align exactly to the light-red writing guide line.
 - 2026-07-01: Phonetic lookup now uses Dictionary API first and Datamuse IPA metadata (`md=r&ipa=1`) as a fallback for single English words. Phrases are intentionally skipped.
+- 2026-07-01: GitHub synchronization uses the GitHub connector API in this environment because the local `.git` directory is not a usable repository and command-line GitHub authentication is unavailable.
