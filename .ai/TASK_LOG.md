@@ -22,3 +22,4 @@
 - 2026-07-01: Added Datamuse IPA fallback for phonetic lookup and skipped lookup for phrases, improving coverage for single-word entries with missing Dictionary API phonetics.
 - 2026-07-01: Added ARPABET-to-IPA conversion and made phonetic refresh replace existing ARPABET-style annotations for single words.
 - 2026-07-01: Prepared the project for GitHub synchronization and used the GitHub API path because local command-line Git authentication was unavailable.
+- 2026-07-01: Installed GitHub CLI v2.95.0 in `/tmp`, completed GitHub authentication for `snoy81`, and pushed the project to `https://github.com/snoy81/copybook`.
