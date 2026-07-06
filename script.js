@@ -2,9 +2,10 @@ const WORDS_PER_PAGE = 10;
 const PRACTICE_ROWS = 1;
 const WRITING_LINES = 4;
 const TRACE_WORDS_PER_ROW = 2;
-const MIN_TRACE_WORD_WIDTH_MM = 32;
-const MAX_TRACE_WORD_WIDTH_MM = 82;
 const MM_TO_CSS_PX = 96 / 25.4;
+const MIN_TRACE_WORD_WIDTH_PX = 32 * MM_TO_CSS_PX;
+const MAX_TRACE_WORD_WIDTH_PX = 88 * MM_TO_CSS_PX;
+const TRACE_WORD_FONT = '400 34px "Comic Sans MS", "Trebuchet MS", Arial, sans-serif';
 const PDFJS_VERSION = "4.10.38";
 const PDFJS_URL = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}/build/pdf.min.mjs`;
 const PDFJS_WORKER_URL = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}/build/pdf.worker.min.mjs`;
@@ -76,6 +77,7 @@ let currentPdfFile;
 let currentPdfPageCount = 1;
 let importRequestId = 0;
 let importDebounceTimer;
+let traceMeasureContext;
 
 const els = {
   title: document.querySelector("#titleInput"),
@@ -544,19 +546,19 @@ function createPracticeRow(word) {
 }
 
 function createTraceWord(word) {
-  const traceWidthMm = getTraceWordWidthMm(word);
+  const traceWidthPx = getTraceWordWidthPx(word);
   const svg = document.createElementNS(SVG_NS, "svg");
   svg.classList.add("trace-word");
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
-  svg.style.setProperty("--trace-word-width", `${traceWidthMm}mm`);
+  svg.style.setProperty("--trace-word-width", `${traceWidthPx}px`);
 
   const text = document.createElementNS(SVG_NS, "text");
   text.setAttribute("x", "0");
   text.setAttribute("y", "61%");
-  const naturalWidthMm = estimateTraceWordWidthMm(word);
-  if (naturalWidthMm > MAX_TRACE_WORD_WIDTH_MM) {
-    text.setAttribute("textLength", String(Math.floor((MAX_TRACE_WORD_WIDTH_MM - 2) * MM_TO_CSS_PX)));
+  const naturalWidthPx = measureTraceWordWidthPx(word);
+  if (naturalWidthPx > MAX_TRACE_WORD_WIDTH_PX) {
+    text.setAttribute("textLength", String(Math.floor(MAX_TRACE_WORD_WIDTH_PX - 8)));
     text.setAttribute("lengthAdjust", "spacingAndGlyphs");
   }
   text.textContent = word;
@@ -565,24 +567,19 @@ function createTraceWord(word) {
   return svg;
 }
 
-function getTraceWordWidthMm(word) {
+function getTraceWordWidthPx(word) {
   return Math.min(
-    MAX_TRACE_WORD_WIDTH_MM,
-    Math.max(MIN_TRACE_WORD_WIDTH_MM, estimateTraceWordWidthMm(word))
+    MAX_TRACE_WORD_WIDTH_PX,
+    Math.max(MIN_TRACE_WORD_WIDTH_PX, measureTraceWordWidthPx(word) + 12)
   );
 }
 
-function estimateTraceWordWidthMm(word) {
-  const estimatedTextWidth = [...word].reduce((width, character) => {
-    if (/\s/.test(character)) return width + 2.4;
-    if (/[ilI.,'`]/.test(character)) return width + 1.7;
-    if (/[fjrt]/.test(character)) return width + 2.6;
-    if (/[mwMW]/.test(character)) return width + 5.2;
-    if (/[A-Z]/.test(character)) return width + 4.5;
-    return width + 3.75;
-  }, 0);
-
-  return estimatedTextWidth + 5;
+function measureTraceWordWidthPx(word) {
+  if (!traceMeasureContext) {
+    traceMeasureContext = document.createElement("canvas").getContext("2d");
+  }
+  traceMeasureContext.font = TRACE_WORD_FONT;
+  return traceMeasureContext.measureText(word).width;
 }
 
 function createWordBlock(entry, wordIndex) {

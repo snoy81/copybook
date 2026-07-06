@@ -15,3 +15,4 @@
 - 2026-07-06: British pronunciation playback prefers Dictionary API audio when present, then falls back to browser speech synthesis with `en-GB`. Exact voice availability depends on the Windows, macOS, or iPad browser/system voices.
 - 2026-07-06: The `words.pdf` table is visually split into left and right column groups, so row-position parsing can produce `1, 16, 2, 17...`; sorting by extracted serial number restores the intended sequence.
 - 2026-07-06: Fixed iPad Safari trace-word overlap by replacing the fixed 32mm SVG trace box with a per-word estimated width and capped text compression for very long words.
+- 2026-07-06: The width estimate was still too small for Safari's actual rendered Comic Sans/Trebuchet fallback. Trace word boxes now use Canvas `measureText` with the same font stack as the SVG text.

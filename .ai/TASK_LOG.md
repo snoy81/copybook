@@ -28,3 +28,4 @@
 - 2026-07-06: Prepared the latest vocabulary reader changes for GitHub synchronization.
 - 2026-07-06: Added a README covering project purpose, usage, PDF import constraints, online services, GitHub Pages deployment, and project file structure.
 - 2026-07-06: Adjusted copybook trace word sizing so long gray example words do not overlap on iPad Safari.
+- 2026-07-06: Reworked copybook trace word sizing to use browser text measurement instead of hand-estimated character widths.

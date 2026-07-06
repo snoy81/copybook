@@ -347,6 +347,7 @@ textarea {
   font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
   font-size: 34px;
   font-weight: 400;
+  letter-spacing: 0;
 }
 
 @media (max-width: 980px) {
