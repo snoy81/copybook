@@ -26,3 +26,4 @@
 - 2026-07-06: Added a responsive PDF vocabulary reader page with PDF-order word display, Chinese translations, phonetics, and tap-to-play British pronunciation.
 - 2026-07-06: Updated the vocabulary reader to sort imported table words by PDF serial number and added a left-side PDF page preview for page selection.
 - 2026-07-06: Prepared the latest vocabulary reader changes for GitHub synchronization.
+- 2026-07-06: Added a README covering project purpose, usage, PDF import constraints, online services, GitHub Pages deployment, and project file structure.
