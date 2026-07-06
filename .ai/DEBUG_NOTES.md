@@ -12,3 +12,5 @@
 - 2026-07-01: Missing phonetics can happen when Dictionary API returns no `phonetic`/`phonetics.text` for a word, especially inflected forms. The fallback uses Datamuse `pron:` IPA metadata for single-word entries.
 - 2026-07-01: Datamuse can still return ARPABET symbols like `HH AO1 R S` despite requesting `ipa=1`. These must be detected and converted to IPA instead of being wrapped directly in slashes.
 - 2026-07-01: Normal `git push` could not authenticate in this sandbox: HTTPS had no username prompt and SSH could not establish host-key/authentication state. The GitHub connector can still write commits through the API.
+- 2026-07-06: British pronunciation playback prefers Dictionary API audio when present, then falls back to browser speech synthesis with `en-GB`. Exact voice availability depends on the Windows, macOS, or iPad browser/system voices.
+- 2026-07-06: The `words.pdf` table is visually split into left and right column groups, so row-position parsing can produce `1, 16, 2, 17...`; sorting by extracted serial number restores the intended sequence.

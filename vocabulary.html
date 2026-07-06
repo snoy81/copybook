@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>English Word Reader</title>
+    <link rel="stylesheet" href="vocabulary.css">
+  </head>
+  <body>
+    <main class="reader-shell">
+      <section class="reader-panel" aria-label="PDF word import controls">
+        <header class="reader-header">
+          <div>
+            <a class="back-link" href="index.html">Copybook</a>
+            <h1>English Word Reader</h1>
+            <p>Import PDF words, then tap a word to hear British pronunciation.</p>
+          </div>
+        </header>
+
+        <div class="controls">
+          <label>
+            <span>PDF import</span>
+            <input id="pdfInput" type="file" accept="application/pdf">
+          </label>
+          <div class="range-control">
+            <label>
+              <span>From page</span>
+              <input id="pageFromInput" type="number" min="1" value="1">
+            </label>
+            <label>
+              <span>To page</span>
+              <input id="pageToInput" type="number" min="1" value="1">
+            </label>
+          </div>
+          <button id="refreshBtn" type="button">Refresh phonetics</button>
+        </div>
+
+        <p id="status" class="status" role="status">
+          Import reads selectable-text PDFs and keeps the word order from the PDF.
+        </p>
+
+        <section class="page-preview" aria-label="PDF page preview">
+          <div class="page-preview-header">
+            <h2>Page Preview</h2>
+            <span id="previewCount">No PDF</span>
+          </div>
+          <div id="pagePreviewList" class="page-preview-list">
+            <p class="preview-empty">Import a PDF to preview pages.</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="word-view" aria-label="Imported words">
+        <div class="word-view-header">
+          <h2>Word List</h2>
+          <span id="wordCount">0 words</span>
+        </div>
+        <div id="wordList" class="word-list">
+          <p class="empty-state">Select a PDF to import words.</p>
+        </div>
+      </section>
+    </main>
+
+    <template id="wordCardTemplate">
+      <button class="word-card" type="button">
+        <span class="word-number"></span>
+        <span class="word-main">
+          <span class="word-text"></span>
+          <span class="word-meta">
+            <span class="translation"></span>
+            <span class="phonetic"></span>
+          </span>
+        </span>
+        <span class="play-mark" aria-hidden="true">▶</span>
+      </button>
+    </template>
+
+    <script src="vocabulary.js"></script>
+  </body>
+</html>

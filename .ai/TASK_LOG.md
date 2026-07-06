@@ -23,3 +23,6 @@
 - 2026-07-01: Added ARPABET-to-IPA conversion and made phonetic refresh replace existing ARPABET-style annotations for single words.
 - 2026-07-01: Prepared the project for GitHub synchronization and used the GitHub API path because local command-line Git authentication was unavailable.
 - 2026-07-01: Installed GitHub CLI v2.95.0 in `/tmp`, completed GitHub authentication for `snoy81`, and pushed the project to `https://github.com/snoy81/copybook`.
+- 2026-07-06: Added a responsive PDF vocabulary reader page with PDF-order word display, Chinese translations, phonetics, and tap-to-play British pronunciation.
+- 2026-07-06: Updated the vocabulary reader to sort imported table words by PDF serial number and added a left-side PDF page preview for page selection.
+- 2026-07-06: Prepared the latest vocabulary reader changes for GitHub synchronization.

@@ -11,3 +11,5 @@
 - 2026-07-01: Practice trace words are rendered as inline SVG text so their text baseline can align exactly to the light-red writing guide line.
 - 2026-07-01: Phonetic lookup now uses Dictionary API first and Datamuse IPA metadata (`md=r&ipa=1`) as a fallback for single English words. Phrases are intentionally skipped.
 - 2026-07-01: GitHub synchronization uses the GitHub connector API in this environment because the local `.git` directory is not a usable repository and command-line GitHub authentication is unavailable.
+- 2026-07-06: Added a separate vocabulary reader page instead of extending the copybook page, so PDF word review and pronunciation playback do not disturb print layout behavior.
+- 2026-07-06: Vocabulary reader imports now prefer PDF table serial numbers for ordering within each selected page, with text position order as the fallback for PDFs without serials.

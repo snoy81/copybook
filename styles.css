@@ -22,6 +22,7 @@ body {
 }
 
 button,
+.nav-button,
 input,
 textarea {
   font: inherit;
@@ -79,9 +80,20 @@ button {
   cursor: pointer;
 }
 
-button + button {
+button + button,
+.nav-button {
   color: #1f2937;
   background: #fff;
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  padding: 9px 12px;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .controls-grid {
