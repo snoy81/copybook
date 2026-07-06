@@ -409,4 +409,26 @@ textarea {
   .copybook-page:last-child {
     page-break-after: auto;
   }
+
+  @supports (-webkit-touch-callout: none) {
+    .copybook-page {
+      padding: 4.5mm 10mm 4mm;
+    }
+
+    .page-header {
+      padding-bottom: 1.6mm;
+    }
+
+    .word-block {
+      padding: 0.45mm 0 0.45mm;
+    }
+
+    .model-row {
+      margin-bottom: 0.35mm;
+    }
+
+    .page-footer {
+      flex-basis: 3mm;
+    }
+  }
 }

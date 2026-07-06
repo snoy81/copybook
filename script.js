@@ -76,7 +76,6 @@ let pdfJsPromise;
 let currentPdfFile;
 let currentPdfPageCount = 1;
 let importRequestId = 0;
-let importDebounceTimer;
 let traceMeasureContext;
 
 const els = {
@@ -648,8 +647,10 @@ els.phonetics.addEventListener("click", async () => {
     missingCount ? "error" : "success"
   );
 });
-els.pageFrom.addEventListener("input", scheduleCurrentPdfImport);
-els.pageTo.addEventListener("input", scheduleCurrentPdfImport);
+els.pageFrom.addEventListener("change", importCurrentPdf);
+els.pageTo.addEventListener("change", importCurrentPdf);
+els.pageFrom.addEventListener("keydown", importCurrentPdfOnEnter);
+els.pageTo.addEventListener("keydown", importCurrentPdfOnEnter);
 els.pdf.addEventListener("change", async (event) => {
   const [file] = event.target.files;
   if (!file) return;
@@ -724,9 +725,10 @@ async function importCurrentPdf() {
   }
 }
 
-function scheduleCurrentPdfImport() {
-  window.clearTimeout(importDebounceTimer);
-  importDebounceTimer = window.setTimeout(() => importCurrentPdf(), 500);
+function importCurrentPdfOnEnter(event) {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  event.currentTarget.blur();
 }
 
 render();

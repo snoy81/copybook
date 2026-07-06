@@ -30,3 +30,5 @@
 - 2026-07-06: Adjusted copybook trace word sizing so long gray example words do not overlap on iPad Safari.
 - 2026-07-06: Reworked copybook trace word sizing to use browser text measurement instead of hand-estimated character widths.
 - 2026-07-06: Added cache-busting query versions to static CSS and JavaScript asset URLs for GitHub Pages.
+- 2026-07-06: Fixed copybook page range inputs to import on commit instead of while typing, and tightened print-only A4 spacing for iPad Safari PDF export.
+- 2026-07-06: Scoped copybook print layout tightening to WebKit/iPad Safari and bumped static asset versions to avoid stale GitHub Pages caches.

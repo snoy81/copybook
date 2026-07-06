@@ -16,3 +16,6 @@
 - 2026-07-06: The `words.pdf` table is visually split into left and right column groups, so row-position parsing can produce `1, 16, 2, 17...`; sorting by extracted serial number restores the intended sequence.
 - 2026-07-06: Fixed iPad Safari trace-word overlap by replacing the fixed 32mm SVG trace box with a per-word estimated width and capped text compression for very long words.
 - 2026-07-06: The width estimate was still too small for Safari's actual rendered Comic Sans/Trebuchet fallback. Trace word boxes now use Canvas `measureText` with the same font stack as the SVG text.
+- 2026-07-06: Copybook page range inputs should not import on every input event because `importCurrentPdf()` normalizes and rewrites the field while users are still typing. Import now runs on change/Enter.
+- 2026-07-06: iPad Safari PDF export has a tighter print layout than screen preview. Added print-only vertical spacing reductions so all 10 word groups fit without changing Chrome/screen layout.
+- 2026-07-06: Playwright browser simulation could not run in this environment because Chromium is missing `libnspr4.so` and WebKit is missing GTK/GStreamer-related shared libraries.
