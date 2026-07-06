@@ -333,7 +333,10 @@ textarea {
 }
 
 .trace-word {
-  flex: 0 0 32mm;
+  flex: 0 0 var(--trace-word-width, 32mm);
+  width: var(--trace-word-width, 32mm);
+  min-width: var(--trace-word-width, 32mm);
+  max-width: var(--trace-word-width, 32mm);
   height: 100%;
   overflow: visible;
   color: var(--ghost);
